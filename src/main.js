@@ -4,6 +4,7 @@ import Vue from 'vue'
 import App from './App'
 import router from './router'
 import request from './utils/request'
+import './assets/styles/global.styl'
 
 Vue.config.productionTip = false
 Vue.prototype.$axios = request
