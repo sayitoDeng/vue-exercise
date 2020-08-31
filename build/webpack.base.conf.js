@@ -38,6 +38,11 @@ module.exports = {
         options: vueLoaderConfig
       },
       {
+        test:/\.jsx?$/,
+        exclude: /node_modules/,
+        use: [{loader: 'babel-loader'}]
+      },
+      {
         test: /\.js$/,
         loader: 'babel-loader',
         include: [resolve('src'), resolve('test'), resolve('node_modules/webpack-dev-server/client')]
@@ -65,16 +70,17 @@ module.exports = {
           limit: 10000,
           name: utils.assetsPath('fonts/[name].[hash:7].[ext]')
         }
-      },
-      {
-        test: /\.styl$/,
-        use: [
-          //  MiniCssExtractPlugin.loader,
-            {loader: 'css-loader'},
-            {loader: "postcss-loader"},
-            {loader: 'stylus-loader'}
-        ]
       }
+      // {
+      //   test: /\.styl$/,
+      //   loader:'style-loader!css-loader!stylus-loader'
+      //   // use: [
+      //   //   //  MiniCssExtractPlugin.loader,
+      //   //     {loader: 'css-loader'},
+      //   //     {loader: "postcss-loader"},
+      //   //     {loader: 'stylus-loader'}
+      //   // ]
+      // }
 
     ]
   },
