@@ -8,16 +8,19 @@
         @keyup.enter="addTodo"
       >
        <Item :todo="todo"></Item>
+       <Tabs :filter="filter"></Tabs>
   </section>
  
 </template>
 
 <script>
 import Item from './item.vue';
+import Tabs from './tabs.vue';
 export default {
   name: '',
   components:{
     Item,
+    Tabs,
   },
   data () {
     return {
@@ -25,7 +28,8 @@ export default {
         id:0,
         content:'this is todo',
         completed:false,
-      }
+      },
+      filter:'all'
     };
   },
   methods: {
