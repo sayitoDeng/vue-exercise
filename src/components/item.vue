@@ -1,5 +1,5 @@
 <template>
-  <div :class="['todo-item',todo.complete?'completed':'']">
+  <div :class="['todo-item',todo.completed?'completed':'']">
     <input 
         type="checkbox" 
         class="toggle"
