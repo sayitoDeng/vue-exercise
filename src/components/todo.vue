@@ -7,15 +7,25 @@
         placeholder="TODO"
         @keyup.enter="addTodo"
       >
+       <Item :todo="todo"></Item>
   </section>
+ 
 </template>
 
 <script>
+import Item from './item.vue';
 export default {
   name: '',
+  components:{
+    Item,
+  },
   data () {
     return {
-      
+      todo:{
+        id:0,
+        content:'this is todo',
+        completed:false,
+      }
     };
   },
   methods: {
