@@ -28,7 +28,7 @@ export default {
   mounted () {},
   methods: {
       deleteTodo(){
-          
+          this.$emit('del',this.todo.id)
       }
   }
 }
