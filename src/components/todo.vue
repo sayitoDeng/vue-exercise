@@ -1,71 +1,70 @@
 <template>
   <section id="real-app">
-      <input 
-        type="text"
-        class="add-input"
-        autofocus="autofocus"
-        placeholder="TODO"
-        @keyup.enter="addTodo"
-      >
-       <Item 
-          :todo="todo"
-          v-for="todo in filterTodos"
-          :key="todo.id"
-          @del="deleteTodo"
-        />
-       <Tabs 
-          :filter="filter" 
-          :todos="todos" 
-          @toggle="toggleFilter"
-          @clearAll="clearAllCompleted"
-        ></Tabs>
+    <input
+      type="text"
+      class="add-input"
+      autofocus="autofocus"
+      placeholder="TODO"
+      @keyup.enter="addTodo"
+    >
+    <Item
+      v-for="todo in filterTodos"
+      :key="todo.id"
+      :todo="todo"
+      @del="deleteTodo"
+    />
+    <Tabs
+      :filter="filter"
+      :todos="todos"
+      @toggle="toggleFilter"
+      @clearAll="clearAllCompleted"
+    />
   </section>
- 
 </template>
 
 <script>
-import Item from './item.vue';
-import Tabs from './tabs.vue';
+import Item from './item.vue'
+import Tabs from './tabs.vue'
 let id = 0
 export default {
   name: '',
-  components:{
+  components: {
     Item,
-    Tabs,
+    Tabs
   },
   data () {
     return {
-      filter:'all',
-      todos:[]
-    };
+      filter: 'all',
+      todos: []
+    }
   },
-  computed:{
-    filterTodos(){
-      if(this.filter==='all'){
+  computed: {
+    filterTodos () {
+      if (this.filter === 'all') {
         return this.todos
       }
-      const completed = this.filter==='complete';
-      return this.todos.filter(todo=>completed===todo.completed )
+      const completed = this.filter === 'complete'
+      return this.todos.filter(todo => completed === todo.completed)
     }
   },
   methods: {
-      addTodo(e){
-        this.todos.unshift({
-          id:id++,
-          content:e.target.value.trim(),
-          completed:false
-        })
-        e.target.value = ''
-      },
-      deleteTodo(id){
-        this.todos.splice(this.todos.findIndex(todo=>todo.id===id),1)
-      },
-      toggleFilter(state){
-        this.filter = state
-      },
-      clearAllCompleted(){
-        this.todos=this.todos.filter(todo=>todo.completed===false)
-      }
+    addTodo (e) {
+      this.todos.unshift({
+        id: id++,
+        content: e.target.value.trim(),
+        completed: false
+      })
+      e.target.value = ''
+    },
+    deleteTodo (id) {
+      this.todos.splice(this.todos.findIndex(todo => todo.id === id), 1)
+    },
+    toggleFilter (state) {
+      this.filter = state
+    },
+    clearAllCompleted () {
+      this.todos = this.todos.filter(todo => todo.completed === false)
+    }
   }
 }
 </script>
@@ -81,11 +80,11 @@ export default {
     margin 0
     width 100%
     font-size 24px
-    font-weight inherit 
-    font-family inherit 
+    font-weight inherit
+    font-family inherit
     line-height 1.4em
-    outline none 
-    color inherit 
+    outline none
+    color inherit
     padding 6px
     border 1px solid #999
     box-sizing border-box

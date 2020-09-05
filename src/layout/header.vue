@@ -1,18 +1,18 @@
 <template>
   <header class="main-header">
-      <h1>Todo</h1>
+    <h1>Todo</h1>
   </header>
 </template>
 
 <script>
 export default {
   name: '',
+  components: {},
   data () {
     return {
-      
-    };
+
+    }
   },
-  components: {},
   mounted () {},
   methods: {}
 }

@@ -1,54 +1,57 @@
 <template>
   <div class="helper">
-      <span class="left">{{unFinishedTodoLength}} items left</span>
-      <span class="tabs">
-          <span
-            v-for="state in states"
-            :key="state"
-            :class="[state,filter === state ? 'actived' : '']"
-            @click="toggleFilter(state)"
-          >
-              {{state}}
-          </span>
+    <span class="left">{{ unFinishedTodoLength }} items left</span>
+    <span class="tabs">
+      <span
+        v-for="state in states"
+        :key="state"
+        :class="[state,filter === state ? 'actived' : '']"
+        @click="toggleFilter(state)"
+      >
+        {{ state }}
       </span>
-      <span class="clear" @click="clearAllCompleted()">Clear completed</span>
+    </span>
+    <span
+      class="clear"
+      @click="clearAllCompleted()"
+    >Clear completed</span>
   </div>
 </template>
 
 <script>
 export default {
   name: '',
-  props:{
-      filter:{
-          type:String,
-          required:true,
-      },
-      todos:{
-          type:Array,
-          required:true,
-      }
+  components: {
+
+  },
+  props: {
+    filter: {
+      type: String,
+      required: true
+    },
+    todos: {
+      type: Array,
+      required: true
+    }
   },
   data () {
     return {
-      states:['all','active','complete']
-    };
+      states: ['all', 'active', 'complete']
+    }
   },
-  components: {
-      
-  },
-  computed:{
-      unFinishedTodoLength(){
-          return this.todos.filter(todo=>!todo.completed).length
-      }
+  computed: {
+    unFinishedTodoLength () {
+      return this.todos.filter(todo => !todo.completed).length
+    }
   },
   mounted () {},
   methods: {
-      toggleFilter(state){
-          this.$emit('toggle',state)
-      },
-      clearAllCompleted(){
-          this.$emit('clearAll')
-      }  
+    toggleFilter (state) {
+      this.$emit('toggle', state)
+    },
+    clearAllCompleted () {
+      this.$emit('clearAll')
+    }
   }
 }
 </script>
@@ -72,7 +75,7 @@ export default {
     width 150px
 }
 .left{
-    text-align left 
+    text-align left
 }
 .clear {
     text-align:right
@@ -88,7 +91,7 @@ export default {
         cursor pointer
         border 1px solid rgba(175,47,47,0)
         &.actived{
-            border-color rgba(175,47,47,0.4) 
+            border-color rgba(175,47,47,0.4)
             border-radius 5px
         }
     }

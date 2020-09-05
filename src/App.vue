@@ -1,21 +1,21 @@
 <template>
   <div id="app">
-    <Header></Header>
-    <Todo></Todo>
-    <Footer></Footer>
+    <Header />
+    <Todo />
+    <Footer />
   </div>
 </template>
 
 <script>
-import Header from './components/header.vue';
-import Footer from './components/footer.jsx';
-import Todo from './components/todo.vue';
+import Header from './layout/header.vue'
+import Footer from './layout/footer.jsx'
+import Todo from './components/todo.vue'
 export default {
   name: 'App',
-  components:{
+  components: {
     Header,
     Footer,
-    Todo,
+    Todo
   }
 }
 </script>
@@ -25,7 +25,7 @@ export default {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  
+
   color: #2c3e50;
   position: absolute;
   top: 0;
